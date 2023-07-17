@@ -52,7 +52,7 @@ class Runner(object):
         if self.p.restore:
             self.load_model(save_path)
             self.logger.info('Successfully Loaded previous model')
-        scheduler = MultiStepLR(self.optimizer, milestones=[200,300,400,600, 800], gamma=0.5 if self.p.dataset == "FB15k-237" else 0.4)
+        scheduler = MultiStepLR(self.optimizer, milestones=[200,300,400], gamma=0.5 if self.p.dataset == "FB15k-237" else 0.4)
         for epoch in range(self.p.max_epochs):
             start_time = time.time()
             train_loss = self.train()
